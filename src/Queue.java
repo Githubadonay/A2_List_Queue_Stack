@@ -4,6 +4,7 @@ public class Queue<E> implements Queueable<E> {
     private int size = 0;
 
     private static int CAPACITY = 1000;
+
     public Queue() {
         Data = (E[]) new Object[CAPACITY];
     }
@@ -11,9 +12,9 @@ public class Queue<E> implements Queueable<E> {
     public void enqueue(E data) throws IllegalStateException {
         if (size == Data.length) {
             throw new IllegalStateException("Queue is Full!");
-        }else{
-        int avail = (f + size) % Data.length;
-        Data[avail] = data;
+        } else {
+            int avail = (f + size) % Data.length;
+            Data[avail] = data;
         }
         size++;
     }
