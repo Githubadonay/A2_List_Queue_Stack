@@ -1,5 +1,6 @@
 public class Queue<E> implements Queueable<E> {
     private E[] Data;
+    private Node<E> head;
     private int f = 0;
     private int size = 0;
 
@@ -48,16 +49,17 @@ public class Queue<E> implements Queueable<E> {
     }
 
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        for (int i = 0; i < size; i++) {
-            int idx = (f + i) % Data.length;
-            sb.append(Data[idx]);
-            if (i < size - 1)
-                sb.append(",");
+        if (isEmpty()) {
+            return "{}";
+        } else {
+            String returnValue = "{" + Data[f];
+            for (int i = 1; i < size; i++) {
+                int idx = (f + i) % Data.length;
+                returnValue += "," + Data[idx];
+            }
+            returnValue += "}";
+            return returnValue;
         }
-        sb.append("}");
-        return sb.toString();
     }
 
     private class Node<E> {
