@@ -1,8 +1,12 @@
 public class Stack<E> implements Stackable<E> {
     public static final int CAPACITY = 100;
+    private E[] Data;
     private Node<E> top;
     private int size = 0;
 
+    public Stack() {
+        Data = (E[]) new Object[CAPACITY];
+    }
     public void push(E data) {
         if (size() == CAPACITY) {
             throw new IllegalArgumentException();
